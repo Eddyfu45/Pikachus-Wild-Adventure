@@ -1,9 +1,9 @@
 // GLOBAL DOM VARIABLES
-const level = document.getElementById('level');
-const lives = document.getElementById('lives');
+var level = document.getElementById('level');
+var lives = document.getElementById('lives');
 const game = document.getElementById('game');
-let interval;
-const rattataArray = [];
+let speed = 5;
+let enemyArray = [];
 
 const ctx = game.getContext('2d');
 // ====================== SETUP FOR CANVAS RENDERING ======================= //
@@ -25,8 +25,8 @@ class Pokemon{
         this.height = height;
         this.alive = true;
         this.render = function() {
-        ctx.fillStyle = this.color;
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+            ctx.fillStyle = this.color;
+            ctx.fillRect(this.x, this.y, this.width, this.height);
         }
     }
 }
@@ -38,41 +38,108 @@ class Pikachu extends Pokemon {
     }
 }
 
-class Rattata extends Pokemon {
-    spawnRattatas() {
-        for (i = 0; i < 10; i++) {
-            rattataArray.push(new Rattata((Math.random() * game.width), 10, "purple", 30, 30));
-            rattataArray[rattataArray.length - 1].render();
+function spawnEnemy() {
+    if ((levelNum == 1) && (timer % 80 == 0)) { // Caterpie
+        for (i = 0; i < 25; i++) {
+                enemyArray.push(new Pokemon((Math.random() * game.width), 10, "green", 15, 15));
+        }
+    }
+    else if ((levelNum == 2) && (timer % 80 == 0)) { // Pidgeotto
+        for (i = 0; i < 20; i++) {
+                enemyArray.push(new Pokemon((Math.random() * game.width), 10, "purple", 20, 20));
+        }
+    }
+    else if ((levelNum == 3) && (timer % 80 == 0)) { // Eevee
+        for (i = 0; i < 18; i++) {
+                enemyArray.push(new Pokemon((Math.random() * game.width), 10, "brown", 25, 25));
+        }
+    }
+    else if ((levelNum == 4) && (timer % 80 == 0)) { // Poliwhirl
+        for (i = 0; i < 18; i++) {
+                enemyArray.push(new Pokemon((Math.random() * game.width), 10, "blue", 25, 25));
+        }
+    }
+    else if ((levelNum == 5) && (timer % 80 == 0)) { // Gyrados
+        for (i = 0; i < 18; i++) {
+                enemyArray.push(new Pokemon((Math.random() * game.width), 10, "lightblue", 20, 20));
+        }
+    }
+    else if ((levelNum == 6) && (timer % 80 == 0)) { // Zapdos
+        for (i = 0; i < 18; i++) {
+                enemyArray.push(new Pokemon((Math.random() * game.width), 10, "darkyellow", 20, 20));
+        }
+    }
+    else if ((levelNum == 7) && (timer % 80 == 0)) { // Moltres
+        for (i = 0; i < 18; i++) {
+                enemyArray.push(new Pokemon((Math.random() * game.width), 10, "red", 20, 20));
+        }
+    }
+    else if ((levelNum == 8) && (timer % 80 == 0)) { // Articuno
+        for (i = 0; i < 18; i++) {
+                enemyArray.push(new Pokemon((Math.random() * game.width), 10, "lightblue", 20, 20));
+        }
+    }
+    else if ((levelNum == 9) && (timer % 80 == 0)) { // Ho-Oh
+        for (i = 0; i < 18; i++) {
+                enemyArray.push(new Pokemon((Math.random() * game.width), 10, "orange", 20, 20));
+        }
+    }
+    else if ((levelNum == 10) && (timer % 80 == 0)) { // Lugia
+        for (i = 0; i < 18; i++) {
+                enemyArray.push(new Pokemon((Math.random() * game.width), 10, "silver", 20, 20));
         }
     }
 }
 
-function moveRattatas() {
-    rattataArray.forEach(element => {
-        element.y += 50;            
+function moveEnemy() {
+    enemyArray.forEach(element => {
+        element.y += speed;            
     });
 }
 
-function spawnRattatas() {
-    rattataArray = [];
-    for (i = 0; i < 10; i++) {
-        rattataArray[i] = new Pokemon((Math.random() * game.width), 10, "purple", 30, 30);
-        rattataArray[i].render();
+function renderEnemies() {
+    for (i = 0; i < enemyArray.length; i++) {
+        if (enemyArray[i].alive == true) {
+            enemyArray[i].render();
+        }
     }
 }
-
 
 // ====================== HELPER FUNCTIONS ======================= //
 // SANDBOX FOR TESTING PAINTING TECHNIQUES 
 
-function changeScenery(level) {
-    if (level == 1) {
+function changeScenery() {
+    if (levelNum == 1) {
+        game.style.backgroundImage = "url('img/Pokemon Forest Background.png')";
+    }
+    else if (levelNum == 2) {
         game.style.backgroundImage = "url('img/Pokemon Field Background.png')";
     }
+    else if (levelNum == 3) {
+        game.style.backgroundImage = "url('img/Pokemon City Background.png')";
+    }
+    else if (levelNum == 4) {
+        game.style.backgroundImage = "url('img/Pokemon River Background.png')";
+    }
+    else if (levelNum == 5) {
+        game.style.backgroundImage = "url('img/Pokemon Lake Background.jpeg')";
+    }
+    else if (levelNum == 6) {
+        game.style.backgroundImage = "url('img/Pokemon Power Plant Background.jpeg')";
+    }
+    else if (levelNum == 7) {
+        game.style.backgroundImage = "url('img/Pokemon Volcano Background.jpeg')";
+    }
+    else if (levelNum == 8) {
+        game.style.backgroundImage = "url('img/Pokemon Snow Background.jpeg')";
+    }
+    else if (levelNum == 9) {
+        game.style.backgroundImage = "url('img/Pokemon Mountain Background.jpeg')";
+    }
+    else if (levelNum == 10) {
+        game.style.backgroundImage = "url('img/Pokemon Beach Background.jpeg')";
+    }
 }
-
-// //  GUI 
-
 
 // //  KEYBOARD INTERACTION LOGIC 
 
@@ -94,65 +161,59 @@ function movementHandler(e){
 
 // // ====================== GAME PROCESSES ======================= //
 
-function gameLoop() {
-    clearCanvas();
-    level.textContent = `Level ${levelNum}`;
-    lives.textContent = `Lives: ${livesNum}`;
-    // if (rattata.alive) {
-    //     rattata.render();
-    //     if (detectHit(pikachu, rattata)){
-    //         rattata.alive = false;
-    //     }
-    // }
-    player.render();
-}
-
-function enemyLoop() {
-    if (level == 1){
-        spawnRattatas();
+function nextLevel() {
+    if ((timer % 500 == 0) && (timer > 0)) {
+        levelNum += 1;
+        changeScenery();
+        enemyArray = [];
+        speed += 2;
     }
 }
 
-// // ====================== COLLISION DETECTION ======================= //
-
-function detectHit(p1, p2){
-    const test = (
-        p1.y +p1.height > p2.y &&
-        p1.y < p2.y + p2.height &&
-        p1.x + p1.width > p2.x &&
-        p1.x < p2.x + p2.width
-    );
-    return test;
+function gameLoop() {
+    clearCanvas();
+    nextLevel();
+    level.textContent = `Level ${levelNum}`;
+    spawnEnemy(10);
+    renderEnemies();
+    moveEnemy();
+    player.render();
+    detectHit();
+    lives.textContent = `Lives: ${livesNum}`;
+    timer += 1;
+    console.log(timer);
 }
 
-// // // ====================== PAINT INTIAL SCREEN ======================= //
+// function defeatScreen(){
+
+// }
+
+// // ====================== COLLISION DETECTION ======================= //
+
+function detectHit(){
+    for (i = 0; i < enemyArray.length; i++) {
+        const detection = (player.y +player.height > enemyArray[i].y &&
+            player.y < enemyArray[i].y + enemyArray[i].height &&
+            player.x + player.width > enemyArray[i].x &&
+            player.x < enemyArray[i].x + enemyArray[i].width)
+        if (detection && (enemyArray[i].alive == true)) {
+                enemyArray[i].alive = false;
+                livesNum -= 1;
+                // if (livesNum == 0) {
+                //     defeatScreen();
+                // }
+            }
+    }
+}
 
 // // // EVENT LISTENER
 
 begin.addEventListener("click", function() {
-    levelNum = 1;
     livesNum = 6;
-    changeScenery(1);
-    player = new Pikachu((game.width/2), 345, "yellow", 30, 30);
+    levelNum = 1;
+    timer = 0;
+    changeScenery();
+    player = new Pikachu((game.width/2), 345, "yellow", 20, 20);
     document.addEventListener('keydown', movementHandler);
     const runGame = setInterval(gameLoop, 60);
-    const enemySpawn = setInterval(enemyLoop, 5000);
-    const enemyMove = setInterval(moveRattatas, 240);
 })
-
-
-// // KEYPRESS LISTENER
-
-// // CODE STASH
-
-// // game.addEventListener('click', function(e) {
-
-// //     clearCanvas();
-
-// //     randomCrawler.render();
-// //     crawlerArray.push(randomCrawler);
-// //     console.log(crawlerArray.length,"<<<crawlers in here");
-// //     crawlerArray.forEach(crawler => {
-// //         crawler.render();
-// //     })
-// // })
