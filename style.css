@@ -71,7 +71,7 @@ html,body {
     background-color: blue;
   }
 
-  #begin {
+  #begin, #reset {
     margin-left: 20px;
     padding: 5px;
     color: yellow;
