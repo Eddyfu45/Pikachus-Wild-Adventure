@@ -9,6 +9,7 @@ let livesNum;
 let levelNum;
 var runGame;
 let timer;
+let player;
 let enemyArray = [];
 let pikachuIcon = document.getElementById('Pikachu');
 let caterpieIcon = document.getElementById('Caterpie');
@@ -273,6 +274,8 @@ reset.addEventListener("click", function() {
     levelNum = 1;
     timer = 0;
     speed = 5;
+    player.x = (game.width/2);
+    player.y = 345;
     enemyArray = [];
     changeScenery();
     runGame = setInterval(gameLoop, 60);
