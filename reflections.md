@@ -44,8 +44,11 @@ I will have to transition my npc and player into a class, so hopefully I can wor
 - [x] What are your goals for today?
 - [x] Do you have any blockers?
 1. RESPONSE
+I finished most of the game other than the character models/pixels and the defeat/winning screen.
 2. RESPONSE
+My goal is to finish the rest of my project, so my defeat/victory screen, a restart button, and importing the character designs.
 3. RESPONSE
+I don't know how to import the character designs so I'll be asking for help on it.
 
 # Friday
 - [x] What did you achieve yesterday?

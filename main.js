@@ -180,13 +180,21 @@ function gameLoop() {
     player.render();
     detectHit();
     lives.textContent = `Lives: ${livesNum}`;
+    defeatScreen();
     timer += 1;
     console.log(timer);
 }
 
-// function defeatScreen(){
-
-// }
+function defeatScreen(){
+    if (livesNum <= 0) {
+        clearCanvas();
+        clearInterval(gameLoop);
+        game.style.backgroundImage = "url('img/Pikachu Defeat.png')";
+        ctx.font = ("50pt Original Surfer");
+        // ctx.fillStyle = red;
+        ctx.fillText("DEFEAT!", 280, 220);
+    }
+}
 
 // // ====================== COLLISION DETECTION ======================= //
 
@@ -199,9 +207,6 @@ function detectHit(){
         if (detection && (enemyArray[i].alive == true)) {
                 enemyArray[i].alive = false;
                 livesNum -= 1;
-                // if (livesNum == 0) {
-                //     defeatScreen();
-                // }
             }
     }
 }
