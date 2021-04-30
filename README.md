@@ -5,7 +5,6 @@ Pikachu's Wild Adventure
 # HOW TO PLAY
 The player will play as Pikachu, Ash's beloved starter Pokemon of the Kanto League. Your goal as Pikachu is to avoid all other Pokemon and make your way to the very end. The movement keys will be "W, A, S, D" and the Pikachu may activate Quick Attack to dash 3x the normal distance by holding the "SHIFT" key. Pikachu starts with 6 lives and loses one as recoil everytime Pikachu collides into a Pokemon.
 
-![alt text](img/Start Screen.png)
 
 # HOW TO INSTALL
 
