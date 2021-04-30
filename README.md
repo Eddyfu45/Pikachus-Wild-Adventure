@@ -20,7 +20,7 @@ https://github.com/Eddyfu45/Pikachus-Wild-Adventure.git
 
 The core of the player and AI characters use this Pokemon class where certain properties and functions are defined.
 
-`class Pokemon {
+```class Pokemon {
     constructor (x ,y , color, width, height, img){
         this.x = x;
         this.y = y;
@@ -34,11 +34,11 @@ The core of the player and AI characters use this Pokemon class where certain pr
             ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
         }
     }
-}`
+}```
 
 The game itself goes through different functions at a set interval in order to check different statuses as well as movement and spawn times.
 
-`function gameLoop() {
+```function gameLoop() {
     clearCanvas();
     nextLevel();
     level.textContent = `Level ${levelNum}`;
@@ -50,19 +50,33 @@ The game itself goes through different functions at a set interval in order to c
     lives.textContent = `Lives: ${livesNum}`;
     defeatScreen();
     timer += 1;
-}`
+}```
 
+The game progresses based off the amount of time that has passed.
 
+```function nextLevel() {
+    if ((timer % 500 == 0) && (timer > 0)) {
+        levelNum += 1;
+        changeScenery();
+        enemyArray = [];
+        speed += 2;
+    }
+}```
+
+```function moveEnemy() {
+    enemyArray.forEach(element => {
+        element.y += speed;            
+    });
+}
+
+function renderEnemies() {
+    for (i = 0; i < enemyArray.length; i++) {
+        if (enemyArray[i].alive == true) {
+            enemyArray[i].render();
+        }
+    }
+}```
 
 # FUTURE CONSIDERATIONS
 
 Possible changes in the future can include projectiles for both Pikachu and the other Pokemon, potions to pick up to recover life, cosmetic change of a party of 6 different Pokemon with Pikachu in the lead, and a moving background.
-
-# PROCESS WORK
-
-## Initial Wireframes:
-Initial Wireframes go here ( images )
-
-## Scratch Work:
-
-Scratch Work goes here
