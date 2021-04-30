@@ -55,6 +55,16 @@ I don't know how to import the character designs so I'll be asking for help on i
 - [x] What are your goals for today?
 - [x] Do you have any blockers?
 1. RESPONSE
+I finished the rest of my project and updated my README.
 2. RESPONSE
+My goal is to tweak my README just a little bit before we present.
 3. RESPONSE
+I should've add a picture to my actual background and some music of some sort. I also never was able to properly add an image onto README.md...
 
+1. What HTML, CSS, and or JavaScript skills you learned while building your game?
+2. What's one topic you want to spend more practice on?
+
+1. Response
+I've learned how to use the drawImage function for canvas as well as how to import the pictures and utilize it in drawImage. This project also provided some good practice for some topics we learned but didn't practice as much such as classes, intervals and event listeners.
+2. Response
+I definitely feel like I would benefit from more practice with css and displaying different elements on the screen such as objects, maps, movement, etc.
