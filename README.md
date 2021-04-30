@@ -36,7 +36,8 @@ The core of the player and AI characters use this Pokemon class where certain pr
     }
 }```
 
-The game itself goes through different functions at a set interval in order to check different statuses as well as movement and spawn times.
+The game itself goes through different functions at a set interval in order to check different
+statuses as well as movement and spawn times.
 
 ```function gameLoop() {
     clearCanvas();
@@ -79,4 +80,6 @@ function renderEnemies() {
 
 # FUTURE CONSIDERATIONS
 
-Possible changes in the future can include projectiles for both Pikachu and the other Pokemon, potions to pick up to recover life, cosmetic change of a party of 6 different Pokemon with Pikachu in the lead, and a moving background.
+Possible changes in the future can include projectiles for both Pikachu and the other Pokemon,
+potions to pick up to recover life, cosmetic change of a party of 6 different Pokemon with 
+Pikachu in the lead, and a moving background.
