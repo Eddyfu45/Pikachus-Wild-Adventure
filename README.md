@@ -7,7 +7,7 @@ The player will play as Pikachu, Ash's beloved starter Pokemon of the Kanto Leag
 
 
 ## Start Up Screen:
-![alt text](img/Start Screen.png.jpg)
+![alt text](img/Start Screen.png)
 
 # HOW TO INSTALL
 
