@@ -18,6 +18,24 @@ https://github.com/Eddyfu45/Pikachus-Wild-Adventure.git
 
 # HOW IT WORKS
 
+|------------------------------------------------------------------------------------|
+|                                   Enemy Spawn                                      |
+|------------------------------------------------------------------------------------|
+|    *        *         *          *        *    *      *     *         *         *  |
+| *      *     *        *          *   *       *           *        *     *   *   *  |
+|                                                                                    |
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |    |
+|   v   v   v   v   v   v   v   v   v   v   v   v   v   v   v   v   v   v   v   v    |
+|                                                                                    |
+|                                                                                    |
+|                                                                                    |
+|                                                                                    |
+|                                       #                                            |
+|                                   (Player)                                         |
+|------------------------------------------------------------------------------------|
+|                                   Hero Spawn                                       |
+|------------------------------------------------------------------------------------|
+
 The core of the player and AI characters use this Pokemon class where certain properties and functions are defined.
 
 ```class Pokemon {
