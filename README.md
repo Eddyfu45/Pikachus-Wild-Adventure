@@ -34,8 +34,7 @@ The core of the player and AI characters use this Pokemon class where certain pr
     }
 }```
 
-The game itself goes through different functions at a set interval in order to check different
-statuses as well as movement and spawn times.
+The game itself goes through different functions at a set interval in order to check different statuses as well as movement and spawn times.
 
 ```function gameLoop() {
     clearCanvas();
@@ -60,9 +59,9 @@ The game progresses based off the amount of time that has passed.
         enemyArray = [];
         speed += 2;
     }
-}```
+}
 
-```function moveEnemy() {
+function moveEnemy() {
     enemyArray.forEach(element => {
         element.y += speed;            
     });
